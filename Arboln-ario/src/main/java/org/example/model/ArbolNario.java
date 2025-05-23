@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArbolNario {
-    class Nodo {
-        int valor;
-        List<Nodo> hijos;
+    public static class Nodo {
+        public int valor;
+        public List<Nodo> hijos;
 
         public Nodo(int valor) {
             this.valor = valor;
@@ -15,6 +15,20 @@ public class ArbolNario {
     }
 
     private Nodo raiz;
+
+    public void agregarRaiz(int valor) {
+        this.raiz = new Nodo(valor);
+    }
+
+    public void agregarHijo(Nodo padre, int valor) {
+        if (padre != null) {
+            padre.hijos.add(new Nodo(valor));
+        }
+    }
+
+    public Nodo getRaiz() {
+        return this.raiz;
+    }
 
     public int alturaMaxima() {
         return calcularAltura(raiz);
@@ -26,21 +40,8 @@ public class ArbolNario {
         int maxAltura = 0;
         for (Nodo hijo : nodo.hijos) {
             int alturaHijo = calcularAltura(hijo);
-            if (alturaHijo > maxAltura) {
-                maxAltura = alturaHijo;
-            }
+            maxAltura = Math.max(maxAltura, alturaHijo);
         }
         return maxAltura + 1;
-    }
-
-
-    public void agregarRaiz(int valor) {
-        this.raiz = new Nodo(valor);
-    }
-
-    public void agregarHijo(Nodo padre, int valor) {
-        if (padre != null) {
-            padre.hijos.add(new Nodo(valor));
-        }
     }
 }
