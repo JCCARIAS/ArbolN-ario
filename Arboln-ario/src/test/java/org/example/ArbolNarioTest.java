@@ -29,12 +29,7 @@ public class ArbolNarioTest {
 
     @Test
     public void testAlturaConMultiplesNiveles() {
-        // Construir árbol:
-        //        1
-        //      / | \
-        //     2  3  4
-        //    / \
-        //   5   6
+
         arbol.agregarRaiz(1);
         ArbolNario.Nodo raiz = arbol.getRaiz();
 
@@ -54,7 +49,7 @@ public class ArbolNarioTest {
         arbol.agregarRaiz(1);
         int hijosIniciales = arbol.getRaiz().hijos.size();
 
-        // No debería lanzar excepción
+
         arbol.agregarHijo(null, 2);
 
         assertEquals(hijosIniciales, arbol.getRaiz().hijos.size());
@@ -62,12 +57,6 @@ public class ArbolNarioTest {
 
     @Test
     public void testArbolDesbalanceado() {
-        // Construir árbol:
-        //     1
-        //    /
-        //   2
-        //  /
-        // 3
         arbol.agregarRaiz(1);
         ArbolNario.Nodo nodo = arbol.getRaiz();
         arbol.agregarHijo(nodo, 2);
